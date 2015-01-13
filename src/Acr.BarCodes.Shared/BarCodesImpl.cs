@@ -9,6 +9,7 @@ using ZXing.Common;
 using ZXing.Mobile;
 #if __ANDROID__
 using Java.Nio;
+using Android.App;
 using Android.Runtime;
 using Android.Graphics;
 #elif __IOS__
@@ -22,7 +23,15 @@ namespace Acr.BarCodes {
 
     public class BarCodesImpl : IBarCodes {
 
-		public BarCodesImpl() {
+#if __ANDROID__
+        private readonly Func<Activity> getTopActivity;
+
+
+		public BarCodesImpl(Func<Activity> getTopActivity) {
+            this.getTopActivity = getTopActivity;
+#else
+        public BarCodesImpl() {
+#endif
             var def = MobileBarcodeScanningOptions.Default;
 
 			BarCodeReadConfiguration.Default = new BarCodeReadConfiguration {
@@ -49,50 +58,13 @@ namespace Acr.BarCodes {
 					PureBarcode = cfg.PureBarcode
                 }
             };
-#if __IOS__
-			return (cfg.ImageType == ImageType.Png)
-				? writer.Write(cfg.BarCode).AsPNG().AsStream()
-				: writer.Write(cfg.BarCode).AsJPEG().AsStream();
-#elif __ANDROID__
-			MemoryStream stream = null;
-
-			var cf = cfg.ImageType == ImageType.Png
-				? Bitmap.CompressFormat.Png
-				: Bitmap.CompressFormat.Jpeg;
-
-			using (var bitmap = writer.Write(cfg.BarCode)) {
-//				bitmap.Compress(cf, 0, ms); doesn't work
-				var buffer = ByteBuffer.Allocate(bitmap.RowBytes * bitmap.Height);
-				bitmap.CopyPixelsToBuffer(buffer);
-				buffer.Rewind();
-//				var bytes = buffer.ToArray<byte>(); doesn't work
-				var classHandle = JNIEnv.FindClass("java/nio/ByteBuffer");
-				var methodId = JNIEnv.GetMethodID(classHandle, "array", "()[B");
-				var resultHandle = JNIEnv.CallObjectMethod(buffer.Handle, methodId);
-				var bytes = JNIEnv.GetArray<byte>(resultHandle);
-				JNIEnv.DeleteLocalRef(resultHandle);
-
-				stream = new MemoryStream(bytes);
-			}
-
-			stream.Position = 0;
-            return stream;
-#elif WINDOWS_PHONE
-            return new MemoryStream(writer.Write(cfg.BarCode).ToByteArray());
-#endif
+            return this.ToImageStream(writer, cfg);
         }
 
 
 		public async Task<BarCodeResult> Read(BarCodeReadConfiguration config, CancellationToken cancelToken) {
 			config = config ?? BarCodeReadConfiguration.Default;
-#if __IOS__
-            var scanner = new MobileBarcodeScanner { UseCustomOverlay = false };
-#elif __ANDROID__
-            var scanner = new MobileBarcodeScanner(ActivityMonitor.CurrentTopActivity);
-            //var scanner = new MobileBarcodeScanner(Android.App.Application.Context);
-#elif WINDOWS_PHONE
-            var scanner = new MobileBarcodeScanner(System.Windows.Deployment.Current.Dispatcher) { UseCustomOverlay = false };
-#endif
+            var scanner = this.GetInstance();
 			cancelToken.Register(scanner.Cancel);
 
             var result = await scanner.Scan(this.GetXingConfig(config));
@@ -127,6 +99,65 @@ namespace Acr.BarCodes {
             }
             return opts;
         }
+
+
+#if __ANDROID__
+        protected virtual MobileBarcodeScanner GetInstance() {
+            return new MobileBarcodeScanner(this.getTopActivity());
+        }
+
+
+        protected virtual Stream ToImageStream(BarcodeWriter writer, BarCodeCreateConfiguration cfg) {
+			MemoryStream stream = null;
+
+			var cf = cfg.ImageType == ImageType.Png
+				? Bitmap.CompressFormat.Png
+				: Bitmap.CompressFormat.Jpeg;
+
+			using (var bitmap = writer.Write(cfg.BarCode)) {
+//				bitmap.Compress(cf, 0, ms); doesn't work
+				var buffer = ByteBuffer.Allocate(bitmap.RowBytes * bitmap.Height);
+				bitmap.CopyPixelsToBuffer(buffer);
+				buffer.Rewind();
+//				var bytes = buffer.ToArray<byte>(); doesn't work
+				var classHandle = JNIEnv.FindClass("java/nio/ByteBuffer");
+				var methodId = JNIEnv.GetMethodID(classHandle, "array", "()[B");
+				var resultHandle = JNIEnv.CallObjectMethod(buffer.Handle, methodId);
+				var bytes = JNIEnv.GetArray<byte>(resultHandle);
+				JNIEnv.DeleteLocalRef(resultHandle);
+
+				stream = new MemoryStream(bytes);
+			}
+
+            //stream.Position = 0;
+            return stream;
+        }
+#endif
+
+#if WINDOWS_PHONE
+        protected virtual Stream ToImageStream(BarcodeWriter writer, BarCodeCreateConfiguration cfg) {
+            return new MemoryStream(writer.Write(cfg.BarCode).ToByteArray());
+        }
+
+
+        protected virtual MobileBarcodeScanner GetInstance() {
+            return new MobileBarcodeScanner(System.Windows.Deployment.Current.Dispatcher) { UseCustomOverlay = false };
+
+        }
+#endif
+
+#if __IOS__
+        protected virtual Stream ToImageStream(BarcodeWriter writer, BarCodeCreateConfiguration cfg) {
+			return (cfg.ImageType == ImageType.Png)
+				? writer.Write(cfg.BarCode).AsPNG().AsStream()
+				: writer.Write(cfg.BarCode).AsJPEG().AsStream();
+        }
+
+
+        protected virtual MobileBarcodeScanner GetInstance() {
+            return new MobileBarcodeScanner { UseCustomOverlay = false };
+        }
+#endif
     }
 }
 #endif

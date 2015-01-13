@@ -2,9 +2,16 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <metadata>
         <id>Acr.BarCodes</id>
-        <version>3.0.0</version>
+        <version>3.0.0-beta1</version>
         <title>BarCodes Xplat Plugin for Xamarin and Windows</title>
-        <description></description>
+        <description>
+Scan and create barcodes from iOS, Android, and Windows Phone
+
+BarCodes.Instance.Read();
+BarCodes.Instance.Create();
+
+ANDROID USERS: You must call BarCodes.Init(Activity) or BarCodes.Init(() => Activity)
+        </description>
         <authors>Allan Ritchie</authors>
         <owners>Allan Ritchie</owners>
         <licenseUrl>http://opensource.org/licenses/ms-pl.html</licenseUrl>
@@ -12,7 +19,7 @@
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <tags>xamarin xam.pcl barcode</tags>
         <dependencies>
-            <dependency id="ZXing.Net.Mobile" version="[1.4.7, 2)" />
+            <dependency id="ZXing.Net.Mobile" version="[1.4.7.1, 2)" />
         </dependencies>
         <releaseNotes>
 2.0
@@ -54,7 +61,7 @@ Initial Release
     </metadata>
     <files>
         <!-- PCL -->
-        <file src="..\src\Acr.BarCodes\Release\bin\Acr.BarCodes.dll" target="lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid10+Xamarin.iOS10\Acr.BarCodes.dll" />
+        <file src="..\src\Acr.BarCodes\bin\Release\Acr.BarCodes.dll" target="lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid10+Xamarin.iOS10\Acr.BarCodes.dll" />
 
         <!-- android -->
         <file src="..\src\Acr.BarCodes.Android\bin\Release\Acr.BarCodes.dll" target="lib\MonoAndroid10\Acr.BarCodes.dll" />
@@ -63,6 +70,6 @@ Initial Release
         <file src="..\src\Acr.BarCodes.iOS\bin\iPhone\Release\Acr.BarCodes.dll" target="lib\Xamarin.iOS10\Acr.BarCodes.dll" />
 
         <!-- winphone -->
-        <file src="..\src\Acr.BarCodes.Windows\bin\Release\Acr.BarCodes.dll" target="lib\wp8\Acr.BarCodes.dll" />
+        <file src="..\src\Acr.BarCodes.WindowsPhone\bin\Release\Acr.BarCodes.dll" target="lib\wp8\Acr.BarCodes.dll" />
     </files>
 </package>
