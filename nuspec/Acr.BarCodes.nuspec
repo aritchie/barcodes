@@ -22,6 +22,9 @@ ANDROID USERS: You must call BarCodes.Init(Activity) or BarCodes.Init(() => Acti
             <dependency id="ZXing.Net.Mobile" version="[1.4.7.1, 2)" />
         </dependencies>
         <releaseNotes>
+3.0
+Bait and Switch design
+
 2.0
 * NEW * - Create barcodes
 Bait and switch design
