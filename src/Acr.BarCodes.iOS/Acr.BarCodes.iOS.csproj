@@ -38,12 +38,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Acr.BarCodes.Interfaces\Acr.BarCodes.Interfaces.csproj">
-      <Project>{6dcfa80a-4dfa-461e-b2a7-a2ba933ce02d}</Project>
-      <Name>Acr.BarCodes.Interfaces</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />

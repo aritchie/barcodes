@@ -5,8 +5,6 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Acr.BarCodes", "Acr.BarCodes\Acr.BarCodes.csproj", "{1BFAA799-38FB-4DB0-871D-11DB5817A704}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Acr.BarCodes.Interfaces", "Acr.BarCodes.Interfaces\Acr.BarCodes.Interfaces.csproj", "{6DCFA80A-4DFA-461E-B2A7-A2BA933CE02D}"
-EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Acr.BarCodes.Shared", "Acr.BarCodes.Shared\Acr.BarCodes.Shared.shproj", "{D76D2F54-5B06-4461-B85A-ADA6D2661D04}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Platforms", "Platforms", "{6CAB265F-D694-4F0E-8384-DA3FEC77FA8C}"
@@ -50,14 +48,6 @@ Global
 		{1BFAA799-38FB-4DB0-871D-11DB5817A704}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1BFAA799-38FB-4DB0-871D-11DB5817A704}.Release|ARM.ActiveCfg = Release|Any CPU
 		{1BFAA799-38FB-4DB0-871D-11DB5817A704}.Release|x86.ActiveCfg = Release|Any CPU
-		{6DCFA80A-4DFA-461E-B2A7-A2BA933CE02D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6DCFA80A-4DFA-461E-B2A7-A2BA933CE02D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6DCFA80A-4DFA-461E-B2A7-A2BA933CE02D}.Debug|ARM.ActiveCfg = Debug|Any CPU
-		{6DCFA80A-4DFA-461E-B2A7-A2BA933CE02D}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{6DCFA80A-4DFA-461E-B2A7-A2BA933CE02D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6DCFA80A-4DFA-461E-B2A7-A2BA933CE02D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6DCFA80A-4DFA-461E-B2A7-A2BA933CE02D}.Release|ARM.ActiveCfg = Release|Any CPU
-		{6DCFA80A-4DFA-461E-B2A7-A2BA933CE02D}.Release|x86.ActiveCfg = Release|Any CPU
 		{6FCA8466-A7B4-41F3-B7E7-23C263229778}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6FCA8466-A7B4-41F3-B7E7-23C263229778}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6FCA8466-A7B4-41F3-B7E7-23C263229778}.Debug|ARM.ActiveCfg = Debug|Any CPU
