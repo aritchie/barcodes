@@ -19,7 +19,15 @@ ANDROID USERS: You must call BarCodes.Init(Activity) or BarCodes.Init(() => Acti
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <tags>xamarin xam.pcl barcode</tags>
         <dependencies>
-            <dependency id="ZXing.Net.Mobile" version="[1.4.7.1, 2)" />
+            <group targetFramework="MonoAndroid">
+                <dependency id="ZXing.Net.Mobile" version="[1.4.7.1, 2)" />
+            </group>
+            <group targetFramework="Xamarin.iOS10">
+                <dependency id="ZXing.Net.Mobile" version="[1.4.7.1, 2)" />
+            </group>
+            <group targetFramework="wp8">
+                <dependency id="ZXing.Net.Mobile" version="[1.4.7.1, 2)" />
+            </group>
         </dependencies>
         <releaseNotes>
 3.0
