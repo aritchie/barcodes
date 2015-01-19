@@ -9,7 +9,6 @@
     <Import_RootNamespace>Acr.BarCodes</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)ActivityMonitor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AssemblyInfo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)BarCodeCreateConfiguration.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)BarCodeFormat.cs" />

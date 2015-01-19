@@ -1,4 +1,3 @@
-#if __ANDROID__
 using System;
 using Android.App;
 using Android.OS;
@@ -27,4 +26,3 @@ namespace Acr.BarCodes {
         public void OnActivityStopped(Activity activity) {}
     }
 }
-#endif
