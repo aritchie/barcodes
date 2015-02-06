@@ -10,7 +10,7 @@ Scan and create barcodes from iOS, Android, and Windows Phone
 BarCodes.Instance.Read();
 BarCodes.Instance.Create();
 
-ANDROID USERS: You must call BarCodes.Init(Activity) or BarCodes.Init(() => Activity)
+ANDROID 4+: BarCodes.Init(Activity); // You must call BarCodes.Init(Activity) or BarCodes.Init(() => Activity)
         </description>
         <authors>Allan Ritchie</authors>
         <owners>Allan Ritchie</owners>
