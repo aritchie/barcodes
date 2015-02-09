@@ -9,9 +9,7 @@ namespace Samples.Pages {
 
 
         public MainPage() {
-            var btnScan = new Button {
-                Text = "Scan BarCode"
-            };
+            var btnScan = new Button { Text = "Scan BarCode" };
             btnScan.Clicked += async (sender, args) => {
                 var result = await BarCodes.Instance.Read();
                 if (!result.Success)

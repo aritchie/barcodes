@@ -2,9 +2,7 @@
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{6EFB24A8-0DFA-4A9A-86F5-00BB453875E1}</ProjectGuid>
     <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
@@ -43,15 +41,15 @@
     <Reference Include="System.Core" />
     <Reference Include="Xamarin.iOS" />
     <Reference Include="zxing.ios">
-      <HintPath>..\packages\ZXing.Net.Mobile.1.4.7\lib\Xamarin.iOS\zxing.ios.dll</HintPath>
+      <HintPath>..\packages\ZXing.Net.Mobile.1.4.7.1\lib\Xamarin.iOS\zxing.ios.dll</HintPath>
     </Reference>
     <Reference Include="ZXing.Net.Mobile">
-      <HintPath>..\packages\ZXing.Net.Mobile.1.4.7\lib\Xamarin.iOS\ZXing.Net.Mobile.dll</HintPath>
+      <HintPath>..\packages\ZXing.Net.Mobile.1.4.7.1\lib\Xamarin.iOS\ZXing.Net.Mobile.dll</HintPath>
     </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="..\Acr.BarCodes.Shared\Acr.BarCodes.Shared.projitems" Label="Shared" Condition="Exists('..\Acr.BarCodes.Shared\Acr.BarCodes.Shared.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
 </Project>

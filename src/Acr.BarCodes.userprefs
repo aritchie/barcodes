@@ -1,0 +1,13 @@
+﻿<Properties StartupItem="Samples/Samples.iOS/Samples.iOS.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhone" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.Allan's iPhone" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Samples/Samples/Pages/CreatePage.cs">
+    <Files>
+      <File FileName="Samples/Samples/Pages/CreatePage.cs" Line="37" Column="37" />
+      <File FileName="Samples/Samples/Pages/MainPage.cs" Line="64" Column="64" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
