@@ -108,29 +108,17 @@ namespace Acr.BarCodes {
 
 
         protected virtual Stream ToImageStream(BarcodeWriter writer, BarCodeCreateConfiguration cfg) {
-			MemoryStream stream = null;
+			var stream = new MemoryStream();
 
 			var cf = cfg.ImageType == ImageType.Png
 				? Bitmap.CompressFormat.Png
 				: Bitmap.CompressFormat.Jpeg;
 
-			using (var bitmap = writer.Write(cfg.BarCode)) {
-//				bitmap.Compress(cf, 0, ms); doesn't work
-				var buffer = ByteBuffer.Allocate(bitmap.RowBytes * bitmap.Height);
-				bitmap.CopyPixelsToBuffer(buffer);
-				buffer.Rewind();
-//				var bytes = buffer.ToArray<byte>(); doesn't work
-				var classHandle = JNIEnv.FindClass("java/nio/ByteBuffer");
-				var methodId = JNIEnv.GetMethodID(classHandle, "array", "()[B");
-				var resultHandle = JNIEnv.CallObjectMethod(buffer.Handle, methodId);
-				var bytes = JNIEnv.GetArray<byte>(resultHandle);
-				JNIEnv.DeleteLocalRef(resultHandle);
+			using (var bitmap = writer.Write(cfg.BarCode))
+				bitmap.Compress(cf, 0, stream);
 
-				stream = new MemoryStream(bytes);
-			}
-
-            //stream.Position = 0;
-            return stream;
+			stream.Position = 0;
+			return stream;
         }
 #endif
 

@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <metadata>
         <id>Acr.BarCodes</id>
-        <version>3.0.1</version>
+        <version>3.0.2</version>
         <title>ACR Barcodes Plugin for Xamarin and Windows</title>
         <description>A cross platform barcode scanner/creator built on top of ZXing.Net.Mobile to allow for easy cross platform access from your Shared/PCL core libraries</description>
         <authors>Allan Ritchie</authors>
@@ -23,8 +23,7 @@
             </group>
         </dependencies>
         <releaseNotes>
-Make Init error when initializing more than once
-Add a PCL warning and error for using its Init method
+Fix Android barcode creation
         </releaseNotes>
     </metadata>
     <files>
