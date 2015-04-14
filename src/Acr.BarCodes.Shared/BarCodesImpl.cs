@@ -66,6 +66,10 @@ namespace Acr.BarCodes {
 			config = config ?? BarCodeReadConfiguration.Default;
             var scanner = this.GetInstance();
 			cancelToken.Register(scanner.Cancel);
+            scanner.BottomText = config.BottomText ?? scanner.BottomText;
+            scanner.CancelButtonText = config.CancelText ?? scanner.CancelButtonText;
+            scanner.FlashButtonText = config.FlashlightText ?? scanner.FlashButtonText;
+            scanner.TopText = config.TopText ?? scanner.TopText;
 
             var result = await scanner.Scan(this.GetXingConfig(config));
             return (result == null || String.IsNullOrWhiteSpace(result.Text)
