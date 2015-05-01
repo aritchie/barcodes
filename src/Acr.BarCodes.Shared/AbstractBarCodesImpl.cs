@@ -7,31 +7,13 @@ using System.Threading.Tasks;
 using ZXing;
 using ZXing.Common;
 using ZXing.Mobile;
-#if __ANDROID__
-using Java.Nio;
-using Android.App;
-using Android.Runtime;
-using Android.Graphics;
-#elif __IOS__
-using UIKit;
-#elif WINDOWS_PHONE
-using System.Windows.Media.Imaging;
-#endif
 
 
 namespace Acr.BarCodes {
 
-    public class BarCodesImpl : IBarCodes {
+    public abstract class AbstractBarCodesImpl : IBarCodes {
 
-#if __ANDROID__
-        private readonly Func<Activity> getTopActivity;
-
-
-		public BarCodesImpl(Func<Activity> getTopActivity) {
-            this.getTopActivity = getTopActivity;
-#else
-        public BarCodesImpl() {
-#endif
+        protected AbstractBarCodesImpl() {
             var def = MobileBarcodeScanningOptions.Default;
 
 			BarCodeReadConfiguration.Default = new BarCodeReadConfiguration {
@@ -105,81 +87,8 @@ namespace Acr.BarCodes {
         }
 
 
-#if __ANDROID__
-        protected virtual MobileBarcodeScanner GetInstance() {
-            return new MobileBarcodeScanner(this.getTopActivity());
-        }
-
-
-        protected virtual Stream ToImageStream(BarcodeWriter writer, BarCodeCreateConfiguration cfg) {
-			var stream = new MemoryStream();
-
-			var cf = cfg.ImageType == ImageType.Png
-				? Bitmap.CompressFormat.Png
-				: Bitmap.CompressFormat.Jpeg;
-
-			using (var bitmap = writer.Write(cfg.BarCode))
-				bitmap.Compress(cf, 0, stream);
-
-			stream.Position = 0;
-			return stream;
-        }
-#endif
-
-#if WINDOWS_PHONE
-        protected virtual Stream ToImageStream(BarcodeWriter writer, BarCodeCreateConfiguration cfg) {
-            return new MemoryStream(writer.Write(cfg.BarCode).ToByteArray());
-        }
-
-
-        protected virtual MobileBarcodeScanner GetInstance() {
-            return new MobileBarcodeScanner(System.Windows.Deployment.Current.Dispatcher) { UseCustomOverlay = false };
-
-        }
-#endif
-
-#if __IOS__
-
-		protected virtual UIWindow GetTopWindow() {
-			return UIApplication.SharedApplication
-				.Windows
-				.Reverse()
-				.FirstOrDefault(x => 
-					x.WindowLevel == UIWindowLevel.Normal && 
-					!x.Hidden
-				);
-		}
-
-
-		protected virtual UIViewController GetTopViewController() {
-			var root = this.GetTopWindow().RootViewController;
-			var tabs = root as UITabBarController;
-			if (tabs != null)
-				return tabs.PresentedViewController ?? tabs.SelectedViewController;
-
-			var nav = root as UINavigationController;
-			if (nav != null)
-				return nav.VisibleViewController;
-
-			if (root.PresentedViewController != null)
-				return root.PresentedViewController;
-
-			return root;
-		}
-
-
-        protected virtual Stream ToImageStream(BarcodeWriter writer, BarCodeCreateConfiguration cfg) {
-			return (cfg.ImageType == ImageType.Png)
-				? writer.Write(cfg.BarCode).AsPNG().AsStream()
-				: writer.Write(cfg.BarCode).AsJPEG().AsStream();
-        }
-
-
-        protected virtual MobileBarcodeScanner GetInstance() {
-			var controller = this.GetTopViewController();
-			return new MobileBarcodeScanner(controller) { UseCustomOverlay = false };
-        }
-#endif
+        protected abstract MobileBarcodeScanner GetInstance();
+        protected abstract Stream ToImageStream(BarcodeWriter writer, BarCodeCreateConfiguration cfg);
     }
 }
 #endif

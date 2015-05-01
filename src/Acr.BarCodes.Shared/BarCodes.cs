@@ -3,51 +3,36 @@
 using Android.App;
 #endif
 
+
 namespace Acr.BarCodes {
 
     public static class BarCodes {
 
+        private static readonly Lazy<IBarCodes> instanceInit = new Lazy<IBarCodes>(() => {
 #if __ANDROID__
-
-        public static void Init(Func<Activity> getActivity) {
-			if (Instance != null)
-				throw new Exception("You have already initialized barcodes");
-            
-			Instance = new BarCodesImpl(getActivity);
-        }
-
-
-        public static void Init(Activity activity) {
-            if (Instance != null)
-				throw new Exception("You have already initialized barcodes");
-
-            var app = Application.Context.ApplicationContext as Application;
-            if (app == null)
-                throw new Exception("Application Context is not an application");
-
-            ActivityMonitor.CurrentTopActivity = activity;
-            app.RegisterActivityLifecycleCallbacks(new ActivityMonitor());
-            Instance = new BarCodesImpl(() => ActivityMonitor.CurrentTopActivity);
-        }
-
+            if (getActivity == null)
+                throw new ArgumentException("Android requires that you pass an activity factory function to Init() from your main activity");
+            return new BarCodesImpl(getActivity);
 #elif __PLATFORM__
+            return new BarCodesImpl();
+#else
+            throw new ArgumentException("No platform implementation found.  Did you install this package into your application project?");
+#endif
+        }, false);
 
-        public static void Init() {
-            if (Instance != null)
-				throw new Exception("You have already initialized barcodes");
-            
-			Instance = new BarCodesImpl();
+#if __ANDROID__
+        private static Func<Activity> getActivity;
+        public static void Init(Func<Activity> activityFactory) {
+            getActivity = activityFactory;
         }
 
-#else
-
-		[Obsolete("This is the PCL version of Init.  You must call Init in your platform project!")]
-		public static void Init() {
-			throw new Exception("This is the PCL version of Init.  You must call Init in your platform project!");
-		}
 #endif
 
 
-        public static IBarCodes Instance { get; set; }
+        private static IBarCodes customInstance;
+        public static IBarCodes Instance {
+            get { return customInstance ?? instanceInit.Value; }
+            set { customInstance = value; }
+        }
     }
 }
