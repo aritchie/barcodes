@@ -13,6 +13,7 @@ namespace Acr.BarCodes {
             var ms = new MemoryStream();
             var bitmap = writer.Write(cfg.BarCode);
             bitmap.SaveJpeg(ms, cfg.Width, cfg.Height, 0, 100);
+            ms.Seek(0, SeekOrigin.Begin);
             return ms;
         }
 
