@@ -10,7 +10,10 @@ namespace Acr.BarCodes {
     public class BarCodesImpl : AbstractBarCodesImpl {
 
         protected override Stream ToImageStream(BarcodeWriter writer, BarCodeCreateConfiguration cfg) {
-            return new MemoryStream(writer.Write(cfg.BarCode).ToByteArray());
+            var ms = new MemoryStream();
+            var bitmap = writer.Write(cfg.BarCode);
+            bitmap.SaveJpeg(ms, cfg.Width, cfg.Height, 0, 100);
+            return ms;
         }
 
 
