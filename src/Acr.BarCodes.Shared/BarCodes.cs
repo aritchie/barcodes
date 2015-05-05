@@ -8,31 +8,23 @@ namespace Acr.BarCodes {
 
     public static class BarCodes {
 
-        private static readonly Lazy<IBarCodes> instanceInit = new Lazy<IBarCodes>(() => {
 #if __ANDROID__
-            if (getActivity == null)
-                throw new ArgumentException("Android requires that you pass an activity factory function to Init() from your main activity");
-            return new BarCodesImpl(getActivity);
+        public static void Init(Func<Activity> getActivity) {
+            Instance = new BarCodesImpl(getActivity);
+        }
+
 #elif __PLATFORM__
-            return new BarCodesImpl();
+        public static void Init() {
+			Instance = new BarCodesImpl();
+        }
 #else
-            throw new ArgumentException("No platform implementation found.  Did you install this package into your application project?");
-#endif
-        }, false);
-
-#if __ANDROID__
-        private static Func<Activity> getActivity;
-        public static void Init(Func<Activity> activityFactory) {
-            getActivity = activityFactory;
+        [Obsolete("You must call the Init() method from the platform project, not this PCL version")]
+        public static void Init() {
+			throw new ArgumentException("You must call the Init() method from the platform project, not this PCL version");
         }
-
 #endif
 
 
-        private static IBarCodes customInstance;
-        public static IBarCodes Instance {
-            get { return customInstance ?? instanceInit.Value; }
-            set { customInstance = value; }
-        }
+        public static IBarCodes Instance { get; set; }
     }
 }

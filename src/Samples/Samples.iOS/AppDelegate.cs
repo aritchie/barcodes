@@ -1,4 +1,5 @@
 ﻿using System;
+using Acr.BarCodes;
 using Foundation;
 using UIKit;
 using Xamarin.Forms;
@@ -11,6 +12,7 @@ namespace Samples.iOS {
     public partial class AppDelegate : FormsApplicationDelegate {
 
         public override bool FinishedLaunching(UIApplication app, NSDictionary options) {
+            BarCodes.Init();
             Forms.Init();
             this.LoadApplication(new App());
             return base.FinishedLaunching(app, options);

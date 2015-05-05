@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <metadata>
         <id>Acr.BarCodes</id>
-        <version>3.0.6</version>
+        <version>3.0.7</version>
         <title>ACR Barcodes Plugin for Xamarin and Windows</title>
         <description>A cross platform barcode scanner/creator built on top of ZXing.Net.Mobile to allow for easy cross platform access from your Shared/PCL core libraries</description>
         <authors>Allan Ritchie</authors>
@@ -23,7 +23,7 @@
             </group>
         </dependencies>
         <releaseNotes>
-Fix issue with creating barcode on WP
+Init is required on all platforms again to prevent confusion, but less annoying about secondary init calls
         </releaseNotes>
     </metadata>
     <files>

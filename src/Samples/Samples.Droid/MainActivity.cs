@@ -14,8 +14,9 @@ namespace Samples.Droid {
 
         protected override void OnCreate(Bundle bundle) {
             base.OnCreate(bundle);
-            Forms.Init(this, bundle);
             BarCodes.Init(() => (Activity)Forms.Context);
+
+            Forms.Init(this, bundle);
             this.LoadApplication(new App());
         }
     }
