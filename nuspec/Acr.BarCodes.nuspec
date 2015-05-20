@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <metadata>
         <id>Acr.BarCodes</id>
-        <version>3.0.7</version>
+        <version>3.0.8</version>
         <title>ACR Barcodes Plugin for Xamarin and Windows</title>
         <description>A cross platform barcode scanner/creator built on top of ZXing.Net.Mobile to allow for easy cross platform access from your Shared/PCL core libraries</description>
         <authors>Allan Ritchie</authors>
@@ -23,12 +23,12 @@
             </group>
         </dependencies>
         <releaseNotes>
-Init is required on all platforms again to prevent confusion, but less annoying about secondary init calls
+Update to profile 259 PCL
         </releaseNotes>
     </metadata>
     <files>
         <!-- PCL -->
-        <file src="..\src\Acr.BarCodes\bin\Release\Acr.BarCodes.dll" target="lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid10+Xamarin.iOS10\Acr.BarCodes.dll" />
+        <file src="..\src\Acr.BarCodes\bin\Release\Acr.BarCodes.dll" target="lib\portable-win+net45+wp8+win8+wpa81\Acr.BarCodes.dll" />
 
         <!-- android -->
         <file src="..\src\Acr.BarCodes.Android\bin\Release\Acr.BarCodes.dll" target="lib\MonoAndroid10\Acr.BarCodes.dll" />
