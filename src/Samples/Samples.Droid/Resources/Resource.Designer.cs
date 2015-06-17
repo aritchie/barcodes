@@ -31,9 +31,6 @@ namespace Samples.Droid
 			global::Acr.BarCodes.Resource.Layout.zxingscannerfragmentlayout = global::Samples.Droid.Resource.Layout.zxingscannerfragmentlayout;
 			global::Acr.BarCodes.Resource.String.ApplicationName = global::Samples.Droid.Resource.String.ApplicationName;
 			global::Acr.BarCodes.Resource.String.Hello = global::Samples.Droid.Resource.String.Hello;
-			global::ZXing.Mobile.Resource.Id.contentFrame = global::Samples.Droid.Resource.Id.contentFrame;
-			global::ZXing.Mobile.Resource.Layout.zxingscanneractivitylayout = global::Samples.Droid.Resource.Layout.zxingscanneractivitylayout;
-			global::ZXing.Mobile.Resource.Layout.zxingscannerfragmentlayout = global::Samples.Droid.Resource.Layout.zxingscannerfragmentlayout;
 		}
 		
 		public partial class Attribute

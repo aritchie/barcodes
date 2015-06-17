@@ -12,7 +12,7 @@ namespace Samples.Pages {
 			var imgCode = new Image();
 			var txtBarcode = new EntryCell { Label = "Bar Code" };
 
-			btnCreate.Clicked += (sender, e) => 
+			btnCreate.Clicked += (sender, e) =>
 				imgCode.Source = ImageSource.FromStream(() => BarCodes.Instance.Create(new BarCodeCreateConfiguration {
 					Format = BarCodeFormat.QR_CODE,
 					BarCode = txtBarcode.Text.Trim(),
@@ -25,7 +25,7 @@ namespace Samples.Pages {
                 Children = {
 					btnCreate,
 					imgCode,
-					new TableView(new TableRoot() {
+					new TableView(new TableRoot {
 						new TableSection {
 							txtBarcode
 						}

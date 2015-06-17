@@ -17,9 +17,28 @@ namespace Acr.BarCodes {
         }
 
 
+        //public void CheckScannerAvailability() {
+        //    var frontCamera = UIImagePickerController.IsCameraDeviceAvailable(UIImagePickerControllerCameraDevice.Front);
+        //    var rearCamera = UIImagePickerController.IsCameraDeviceAvailable(UIImagePickerControllerCameraDevice.Rear);
+        //    if (!frontCamera && !rearCamera)
+        //        throw;
+
+        //    return await AVCaptureDevice.RequestAccessForMediaTypeAsync(AVMediaType.Video);
+        //}
+
+
         protected override MobileBarcodeScanner GetInstance() {
 			var controller = this.GetTopViewController();
-			return new MobileBarcodeScanner(controller) { UseCustomOverlay = false };
+			var scanner = new MobileBarcodeScanner(controller);
+
+            if (BarCodes.CustomOverlayFactory != null) {
+                var overlay = BarCodes.CustomOverlayFactory();
+                if (overlay != null) {
+                    scanner.UseCustomOverlay = true;
+                    scanner.CustomOverlay = overlay;
+                }
+            }
+            return scanner;
         }
 
 

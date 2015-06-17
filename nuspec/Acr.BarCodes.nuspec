@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <metadata>
         <id>Acr.BarCodes</id>
-        <version>3.0.8</version>
+        <version>3.1.0</version>
         <title>ACR Barcodes Plugin for Xamarin and Windows</title>
         <description>A cross platform barcode scanner/creator built on top of ZXing.Net.Mobile to allow for easy cross platform access from your Shared/PCL core libraries</description>
         <authors>Allan Ritchie</authors>
@@ -23,20 +23,24 @@
             </group>
         </dependencies>
         <releaseNotes>
-Update to profile 259 PCL
+Ability to set custom overlay for zxing.net.mobile.  Use BarCodes.CustomOverlayFactory = () => new YourCustomView();
         </releaseNotes>
     </metadata>
     <files>
         <!-- PCL -->
         <file src="..\src\Acr.BarCodes\bin\Release\Acr.BarCodes.dll" target="lib\portable-win+net45+wp8+win8+wpa81\Acr.BarCodes.dll" />
+        <file src="..\src\Acr.BarCodes\bin\Release\Acr.BarCodes.Interface.dll" target="lib\portable-win+net45+wp8+win8+wpa81\Acr.BarCodes.Interface.dll" />
 
         <!-- android -->
         <file src="..\src\Acr.BarCodes.Android\bin\Release\Acr.BarCodes.dll" target="lib\MonoAndroid10\Acr.BarCodes.dll" />
+        <file src="..\src\Acr.BarCodes.Android\bin\Release\Acr.BarCodes.Interface.dll" target="lib\MonoAndroid10\Acr.BarCodes.Interface.dll" />
 
         <!-- ios -->
         <file src="..\src\Acr.BarCodes.iOS\bin\iPhone\Release\Acr.BarCodes.dll" target="lib\Xamarin.iOS10\Acr.BarCodes.dll" />
+        <file src="..\src\Acr.BarCodes.iOS\bin\iPhone\Release\Acr.BarCodes.Interface.dll" target="lib\Xamarin.iOS10\Acr.BarCodes.Interface.dll" />
 
         <!-- winphone -->
         <file src="..\src\Acr.BarCodes.WindowsPhone\bin\Release\Acr.BarCodes.dll" target="lib\wp8\Acr.BarCodes.dll" />
+        <file src="..\src\Acr.BarCodes.WindowsPhone\bin\Release\Acr.BarCodes.Interface.dll" target="lib\wp8\Acr.BarCodes.Interface.dll" />
     </files>
 </package>

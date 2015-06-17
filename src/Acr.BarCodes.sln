@@ -46,6 +46,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Acr.MvvmCross.Plugins.BarCo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Acr.MvvmCross.Plugins.BarCodeScanner.WinPhone", "Acr.MvvmCross.Plugins.BarCodeScanner.WinPhone\Acr.MvvmCross.Plugins.BarCodeScanner.WinPhone.csproj", "{DC51E5AC-4DFB-449E-95E3-A471C0EBB53C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Acr.BarCodes.Interface", "Acr.BarCodes.Interface\Acr.BarCodes.Interface.csproj", "{CAF2EE18-C01F-46FD-BD3B-EF3078B74448}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		Acr.BarCodes.Shared\Acr.BarCodes.Shared.projitems*{6fca8466-a7b4-41f3-b7e7-23c263229778}*SharedItemsImports = 4
@@ -517,6 +519,38 @@ Global
 		{DC51E5AC-4DFB-449E-95E3-A471C0EBB53C}.Release|Mixed Platforms.Build.0 = Release|x86
 		{DC51E5AC-4DFB-449E-95E3-A471C0EBB53C}.Release|x86.ActiveCfg = Release|x86
 		{DC51E5AC-4DFB-449E-95E3-A471C0EBB53C}.Release|x86.Build.0 = Release|x86
+		{CAF2EE18-C01F-46FD-BD3B-EF3078B74448}.Ad-Hoc|Any CPU.ActiveCfg = Release|Any CPU
+		{CAF2EE18-C01F-46FD-BD3B-EF3078B74448}.Ad-Hoc|Any CPU.Build.0 = Release|Any CPU
+		{CAF2EE18-C01F-46FD-BD3B-EF3078B74448}.Ad-Hoc|ARM.ActiveCfg = Release|Any CPU
+		{CAF2EE18-C01F-46FD-BD3B-EF3078B74448}.Ad-Hoc|iPhone.ActiveCfg = Release|Any CPU
+		{CAF2EE18-C01F-46FD-BD3B-EF3078B74448}.Ad-Hoc|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{CAF2EE18-C01F-46FD-BD3B-EF3078B74448}.Ad-Hoc|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{CAF2EE18-C01F-46FD-BD3B-EF3078B74448}.Ad-Hoc|Mixed Platforms.Build.0 = Release|Any CPU
+		{CAF2EE18-C01F-46FD-BD3B-EF3078B74448}.Ad-Hoc|x86.ActiveCfg = Release|Any CPU
+		{CAF2EE18-C01F-46FD-BD3B-EF3078B74448}.AppStore|Any CPU.ActiveCfg = Release|Any CPU
+		{CAF2EE18-C01F-46FD-BD3B-EF3078B74448}.AppStore|Any CPU.Build.0 = Release|Any CPU
+		{CAF2EE18-C01F-46FD-BD3B-EF3078B74448}.AppStore|ARM.ActiveCfg = Release|Any CPU
+		{CAF2EE18-C01F-46FD-BD3B-EF3078B74448}.AppStore|iPhone.ActiveCfg = Release|Any CPU
+		{CAF2EE18-C01F-46FD-BD3B-EF3078B74448}.AppStore|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{CAF2EE18-C01F-46FD-BD3B-EF3078B74448}.AppStore|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{CAF2EE18-C01F-46FD-BD3B-EF3078B74448}.AppStore|Mixed Platforms.Build.0 = Release|Any CPU
+		{CAF2EE18-C01F-46FD-BD3B-EF3078B74448}.AppStore|x86.ActiveCfg = Release|Any CPU
+		{CAF2EE18-C01F-46FD-BD3B-EF3078B74448}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CAF2EE18-C01F-46FD-BD3B-EF3078B74448}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CAF2EE18-C01F-46FD-BD3B-EF3078B74448}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{CAF2EE18-C01F-46FD-BD3B-EF3078B74448}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{CAF2EE18-C01F-46FD-BD3B-EF3078B74448}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{CAF2EE18-C01F-46FD-BD3B-EF3078B74448}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{CAF2EE18-C01F-46FD-BD3B-EF3078B74448}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{CAF2EE18-C01F-46FD-BD3B-EF3078B74448}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{CAF2EE18-C01F-46FD-BD3B-EF3078B74448}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CAF2EE18-C01F-46FD-BD3B-EF3078B74448}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CAF2EE18-C01F-46FD-BD3B-EF3078B74448}.Release|ARM.ActiveCfg = Release|Any CPU
+		{CAF2EE18-C01F-46FD-BD3B-EF3078B74448}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{CAF2EE18-C01F-46FD-BD3B-EF3078B74448}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{CAF2EE18-C01F-46FD-BD3B-EF3078B74448}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{CAF2EE18-C01F-46FD-BD3B-EF3078B74448}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{CAF2EE18-C01F-46FD-BD3B-EF3078B74448}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -534,5 +568,6 @@ Global
 		{0EF6C543-9A82-4A29-A251-4D0A900232DD} = {3A69114C-5DFB-4995-BFC6-84576AA1EB2B}
 		{F1FCED90-6343-42B9-8769-5F5B1C5FE1E3} = {3A69114C-5DFB-4995-BFC6-84576AA1EB2B}
 		{DC51E5AC-4DFB-449E-95E3-A471C0EBB53C} = {3A69114C-5DFB-4995-BFC6-84576AA1EB2B}
+		{CAF2EE18-C01F-46FD-BD3B-EF3078B74448} = {6CAB265F-D694-4F0E-8384-DA3FEC77FA8C}
 	EndGlobalSection
 EndGlobal

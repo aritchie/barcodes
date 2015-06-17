@@ -11,12 +11,6 @@
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)AbstractBarCodesImpl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AssemblyInfo.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)BarCodeCreateConfiguration.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)BarCodeFormat.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)BarCodeReadConfiguration.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)BarCodeResult.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)BarCodes.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)IBarCodes.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ImageType.cs" />
   </ItemGroup>
 </Project>

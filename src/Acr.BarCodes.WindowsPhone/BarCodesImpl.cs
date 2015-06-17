@@ -17,13 +17,21 @@ namespace Acr.BarCodes {
                 bitmap.SaveJpeg(ms, cfg.Width, cfg.Height, 0, 100);
                 ms.Seek(0, SeekOrigin.Begin);
             });
+
             return ms;
         }
 
 
         protected override MobileBarcodeScanner GetInstance() {
-            return new MobileBarcodeScanner(Deployment.Current.Dispatcher) { UseCustomOverlay = false };
-
+            var scanner = new MobileBarcodeScanner(Deployment.Current.Dispatcher);
+            if (BarCodes.CustomOverlayFactory != null) {
+                var overlay = BarCodes.CustomOverlayFactory();
+                if (overlay != null) {
+                    scanner.UseCustomOverlay = true;
+                    scanner.CustomOverlay = overlay;
+                }
+            }
+            return scanner;
         }
     }
 }

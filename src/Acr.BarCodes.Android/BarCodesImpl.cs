@@ -19,7 +19,15 @@ namespace Acr.BarCodes {
 
 
         protected override MobileBarcodeScanner GetInstance() {
-            return new MobileBarcodeScanner(this.getTopActivity());
+            var scanner = new MobileBarcodeScanner(this.getTopActivity());
+            if (BarCodes.CustomOverlayFactory != null) {
+                var overlay = BarCodes.CustomOverlayFactory();
+                if (overlay != null) {
+                    scanner.UseCustomOverlay = true;
+                    scanner.CustomOverlay = overlay;
+                }
+            }
+            return scanner;
         }
 
 

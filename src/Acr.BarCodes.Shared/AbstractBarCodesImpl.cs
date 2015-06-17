@@ -87,6 +87,7 @@ namespace Acr.BarCodes {
         }
 
 
+        
         protected abstract MobileBarcodeScanner GetInstance();
         protected abstract Stream ToImageStream(BarcodeWriter writer, BarCodeCreateConfiguration cfg);
     }
