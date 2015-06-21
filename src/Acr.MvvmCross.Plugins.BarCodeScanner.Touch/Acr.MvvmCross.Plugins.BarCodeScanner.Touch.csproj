@@ -38,7 +38,11 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Acr.BarCodes, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Acr.BarCodes.3.0.7\lib\Xamarin.iOS10\Acr.BarCodes.dll</HintPath>
+      <HintPath>..\packages\Acr.BarCodes.3.1.0\lib\Xamarin.iOS10\Acr.BarCodes.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Acr.BarCodes.Interface, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Acr.BarCodes.3.1.0\lib\Xamarin.iOS10\Acr.BarCodes.Interface.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Cirrious.CrossCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=e16445fd9b451819, processorArchitecture=MSIL">
