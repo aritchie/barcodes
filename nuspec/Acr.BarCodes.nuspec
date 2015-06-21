@@ -24,6 +24,7 @@
         </dependencies>
         <releaseNotes>
 Ability to set custom overlay for zxing.net.mobile.  Use BarCodes.CustomOverlayFactory = () => new YourCustomView();
+Interface library now used for better abstraction point
         </releaseNotes>
     </metadata>
     <files>
