@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <metadata>
         <id>Acr.MvvmCross.Plugins.BarCodeScanner</id>
-        <version>3.0.1</version>
+        <version>3.1.0</version>
         <title>MvvmCross Barcode Plugin</title>
         <description>Barcode scanning and creation plugin for MvvmCross built on ZXing.Net.Mobile.  Supports iOS, Android, and WinPhone8</description>
         <authors>Allan Ritchie</authors>
@@ -14,23 +14,23 @@
         <dependencies>
             <group>
                 <dependency id="MvvmCross.HotTuna.CrossCore" version="[3.5, 4.0)" />
-                <dependency id="Acr.BarCodes" version="[3.0.8, 4.0)" />
+                <dependency id="Acr.BarCodes" version="[3.1.0, 4.0)" />
             </group>
             <group targetFramework="MonoAndroid">
                 <dependency id="MvvmCross.HotTuna.CrossCore" version="[3.5, 4.0)" />
-                <dependency id="Acr.BarCodes" version="[3.0.8, 4.0)" />
+                <dependency id="Acr.BarCodes" version="[3.1.0, 4.0)" />
             </group>
             <group targetFramework="MonoTouch">
                 <dependency id="MvvmCross.HotTuna.CrossCore" version="[3.5, 4.0)" />
-                <dependency id="Acr.BarCodes" version="[3.0.8, 4.0)" />
+                <dependency id="Acr.BarCodes" version="[3.1.0, 4.0)" />
             </group>
             <group targetFramework="wp8">
                 <dependency id="MvvmCross.HotTuna.CrossCore" version="[3.5, 4.0)" />
-                <dependency id="Acr.BarCodes" version="[3.0.8, 4.0)" />
+                <dependency id="Acr.BarCodes" version="[3.1.0, 4.0)" />
             </group>
         </dependencies>
         <releaseNotes>
-Now driven by Acr.BarCodes / ZXing.Net.Mobile
+Update to Acr.BarCodes 3.1.0
         </releaseNotes>
     </metadata>
     <files>
