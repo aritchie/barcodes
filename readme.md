@@ -1,4 +1,8 @@
-﻿#Xplat Barcode Scanning for Xamarin and Windows
+#THIS LIBRARY IS NOW DEPRECATED.  THIS WAS NOTHING MORE THAN A PCL BRIDGE FOR ZXING.NET.MOBILE.  ZXING IS NOW PCL OUT OF THE BOX!
+
+
+
+#Xplat Barcode Scanning for Xamarin and Windows
 
 A cross platform barcode scanning and creating library built on top of ZXing.Net.Mobile.  
 
