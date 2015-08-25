@@ -3,13 +3,12 @@
   <PropertyGroup>
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
     <HasSharedItems>true</HasSharedItems>
-    <SharedGUID>d76d2f54-5b06-4461-b85a-ada6d2661d04</SharedGUID>
+    <SharedGUID>cecd9047-0c3f-4de3-84d3-5a5b05a66311</SharedGUID>
   </PropertyGroup>
   <PropertyGroup Label="Configuration">
-    <Import_RootNamespace>Acr.BarCodes</Import_RootNamespace>
+    <Import_RootNamespace>Acr.BarCodes.ZXing.Shared</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)AssemblyInfo.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)BarCodes.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AbstractBarCodesImpl.cs" />
   </ItemGroup>
 </Project>

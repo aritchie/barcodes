@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <metadata>
         <id>Acr.BarCodes</id>
-        <version>3.1.0</version>
+        <version>4.0.0</version>
         <title>ACR Barcodes Plugin for Xamarin and Windows</title>
         <description>A cross platform barcode scanner/creator built on top of ZXing.Net.Mobile to allow for easy cross platform access from your Shared/PCL core libraries</description>
         <authors>Allan Ritchie</authors>
@@ -13,18 +13,21 @@
         <tags>xamarin xam.pcl barcode</tags>
         <dependencies>
             <group targetFramework="MonoAndroid">
-                <dependency id="ZXing.Net.Mobile" version="[1.4.7.1, 2)" />
+                <dependency id="ZXing.Net.Mobile" version="[1.5.1, 2)" />
             </group>
             <group targetFramework="Xamarin.iOS10">
-                <dependency id="ZXing.Net.Mobile" version="[1.4.7.1, 2)" />
+                <dependency id="Acr.Support" version="[1.0, 2.0)" />
+                <dependency id="ZXing.Net.Mobile" version="[1.5.1, 2)" />
             </group>
             <group targetFramework="wp8">
-                <dependency id="ZXing.Net.Mobile" version="[1.4.7.1, 2)" />
+                <dependency id="ZXing.Net.Mobile" version="[1.5.1, 2)" />
             </group>
         </dependencies>
         <releaseNotes>
-Ability to set custom overlay for zxing.net.mobile.  Use BarCodes.CustomOverlayFactory = () => new YourCustomView();
-Interface library now used for better abstraction point
+4.0
+Move to ZXing.Net.Mobile 1.5
+Simplified API
+Unified Windows Platform support!
         </releaseNotes>
     </metadata>
     <files>

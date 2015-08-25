@@ -1,5 +1,4 @@
-﻿#if __PLATFORM__
-using System;
+﻿using System;
 using System.IO;
 using System.Linq;
 using System.Threading;
@@ -30,7 +29,7 @@ namespace Acr.BarCodes {
 
 
 		public virtual Stream Create(BarCodeCreateConfiguration cfg) {
-            var writer = new BarcodeWriter {
+            var writer = new ZXing.Mobile.BarcodeWriter {
 				Format = (BarcodeFormat)Enum.Parse(typeof(BarcodeFormat), cfg.Format.ToString()),
                 Encoder = new MultiFormatWriter(),
                 Options = new EncodingOptions {
@@ -44,29 +43,49 @@ namespace Acr.BarCodes {
         }
 
 
-		public async Task<BarCodeResult> Read(BarCodeReadConfiguration config, CancellationToken cancelToken) {
+        public void ContinuousScan(Action<BarCodeResult> onScan, BarCodeReadConfiguration config, CancellationToken cancelToken) {
+            var scanner = this.BuildScanner(config, cancelToken);
+            var zxing = this.GetZXingConfig(config);
+            scanner.ScanContinuously(zxing, x => {
+                var result = this.FromZXing(x);
+                onScan(result);
+            });
+        }
+
+
+        public async Task<BarCodeResult> Scan(BarCodeReadConfiguration config, CancellationToken cancelToken) {
+            var scanner = this.BuildScanner(config, cancelToken);
+            var result = await scanner.Scan(this.GetZXingConfig(config));
+            return this.FromZXing(result);
+        }
+
+
+
+        protected virtual BarCodeResult FromZXing(Result result) {
+            var format = this.FromZXingFormat(result.BarcodeFormat);
+            return new BarCodeResult(result.Text, format);
+        }
+
+
+        protected virtual MobileBarcodeScanner BuildScanner(BarCodeReadConfiguration config, CancellationToken cancelToken) {
 			config = config ?? BarCodeReadConfiguration.Default;
             var scanner = this.GetInstance();
 			cancelToken.Register(scanner.Cancel);
+            scanner.CameraUnsupportedMessage = config.CameraUnsupportedMessage ?? scanner.CameraUnsupportedMessage;
             scanner.BottomText = config.BottomText ?? scanner.BottomText;
             scanner.CancelButtonText = config.CancelText ?? scanner.CancelButtonText;
             scanner.FlashButtonText = config.FlashlightText ?? scanner.FlashButtonText;
             scanner.TopText = config.TopText ?? scanner.TopText;
-
-            var result = await scanner.Scan(this.GetXingConfig(config));
-            return (result == null || String.IsNullOrWhiteSpace(result.Text)
-                ? BarCodeResult.Fail
-                : new BarCodeResult(result.Text, FromXingFormat(result.BarcodeFormat))
-            );
+            return scanner;
         }
 
 
-        private static BarCodeFormat FromXingFormat(ZXing.BarcodeFormat format) {
+        protected virtual BarCodeFormat FromZXingFormat(ZXing.BarcodeFormat format) {
             return (BarCodeFormat)Enum.Parse(typeof(BarCodeFormat), format.ToString());
         }
 
 
-		private MobileBarcodeScanningOptions GetXingConfig(BarCodeReadConfiguration cfg) {
+		protected virtual MobileBarcodeScanningOptions GetZXingConfig(BarCodeReadConfiguration cfg) {
             var opts = new MobileBarcodeScanningOptions {
                 AutoRotate = cfg.AutoRotate,
                 CharacterSet = cfg.CharacterSet,
@@ -78,7 +97,7 @@ namespace Acr.BarCodes {
                 UseFrontCameraIfAvailable = cfg.UseFrontCameraIfAvailable
             };
 
-            if (cfg.Formats != null && cfg.Formats.Count > 0) {
+            if (cfg.Formats != null && cfg.Formats.Any()) {
                 opts.PossibleFormats = cfg.Formats
                     .Select(x => (BarcodeFormat)(int)x)
                     .ToList();
@@ -87,9 +106,7 @@ namespace Acr.BarCodes {
         }
 
 
-        
         protected abstract MobileBarcodeScanner GetInstance();
-        protected abstract Stream ToImageStream(BarcodeWriter writer, BarCodeCreateConfiguration cfg);
+        protected abstract Stream ToImageStream(ZXing.Mobile.BarcodeWriter writer, BarCodeCreateConfiguration cfg);
     }
 }
-#endif

@@ -13,7 +13,7 @@
     <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
     <DevInstrumentationEnabled>True</DevInstrumentationEnabled>
-    <TargetFrameworkVersion>v2.3</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0.3</TargetFrameworkVersion>
     <AndroidUseLatestPlatformSdk>False</AndroidUseLatestPlatformSdk>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -44,11 +44,13 @@
     <Reference Include="Xamarin.Android.Support.v4">
       <HintPath>..\packages\Xamarin.Android.Support.v4.21.0.3.0\lib\MonoAndroid10\Xamarin.Android.Support.v4.dll</HintPath>
     </Reference>
-    <Reference Include="zxing.monoandroid">
-      <HintPath>..\packages\ZXing.Net.Mobile.1.4.7.1\lib\MonoAndroid\zxing.monoandroid.dll</HintPath>
+    <Reference Include="zxing.portable, Version=0.14.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ZXing.Net.Mobile.1.5.1.0\lib\portable-net45+netcore45+wp8+MonoAndroid10+MonoTouch10+Xamarin.iOS10\zxing.portable.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="ZXing.Net.Mobile">
-      <HintPath>..\packages\ZXing.Net.Mobile.1.4.7.1\lib\MonoAndroid\ZXing.Net.Mobile.dll</HintPath>
+    <Reference Include="ZXingNetMobile, Version=1.5.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ZXing.Net.Mobile.1.5.1.0\lib\portable-net45+netcore45+wp8+MonoAndroid10+MonoTouch10+Xamarin.iOS10\ZXingNetMobile.dll</HintPath>
+      <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -70,6 +72,7 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="..\Acr.BarCodes.Shared\Acr.BarCodes.Shared.projitems" Label="Shared" Condition="Exists('..\Acr.BarCodes.Shared\Acr.BarCodes.Shared.projitems')" />
+  <Import Project="..\Acr.BarCodes.ZXing.Shared\Acr.BarCodes.ZXing.Shared.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

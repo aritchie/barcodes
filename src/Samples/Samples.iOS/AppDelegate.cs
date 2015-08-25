@@ -12,7 +12,6 @@ namespace Samples.iOS {
     public partial class AppDelegate : FormsApplicationDelegate {
 
         public override bool FinishedLaunching(UIApplication app, NSDictionary options) {
-            BarCodes.Init();
             Forms.Init();
             this.LoadApplication(new App());
             return base.FinishedLaunching(app, options);

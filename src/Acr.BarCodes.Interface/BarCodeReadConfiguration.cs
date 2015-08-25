@@ -7,7 +7,7 @@ namespace Acr.BarCodes {
     public class BarCodeReadConfiguration {
 
 		private static BarCodeReadConfiguration @default;
-		public static BarCodeReadConfiguration Default { 
+		public static BarCodeReadConfiguration Default {
 			get {
 				@default = @default ?? new BarCodeReadConfiguration();
 				return @default;
@@ -23,6 +23,7 @@ namespace Acr.BarCodes {
         public string TopText { get; set; }
         public string BottomText { get; set; }
         public string FlashlightText { get; set; }
+        public string CameraUnsupportedMessage { get; set; }
         public string CancelText { get; set; }
 
         public bool? AutoRotate { get; set; }
@@ -39,6 +40,7 @@ namespace Acr.BarCodes {
 		public BarCodeReadConfiguration() {
             this.TopText = "Hold the camera up to the barcode\nAbout 6 inches away";
             this.BottomText = "Wait for the barcode to automatically scan";
+            this.CameraUnsupportedMessage = "No camera or permission was denied";
             this.Formats = new List<BarCodeFormat>(3);
         }
     }

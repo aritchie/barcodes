@@ -10,10 +10,10 @@ namespace Acr.BarCodes {
 
     public class BarCodesImpl : AbstractBarCodesImpl {
 
-        protected override Stream ToImageStream(BarcodeWriter writer, BarCodeCreateConfiguration cfg) {
+        protected override Stream ToImageStream(ZXing.BarcodeWriter writer, BarCodeCreateConfiguration cfg) {
             var ms = new MemoryStream();
             Deployment.Current.Dispatcher.BeginInvoke(() => {
-                var bitmap = writer.Write(cfg.BarCode);
+                var bytes = writer.Write(cfg.BarCode);
                 bitmap.SaveJpeg(ms, cfg.Width, cfg.Height, 0, 100);
                 ms.Seek(0, SeekOrigin.Begin);
             });

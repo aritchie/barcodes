@@ -85,25 +85,34 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="zxing.wp8.0, Version=0.14.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\ZXing.Net.Mobile.1.4.7.1\lib\wp8\zxing.wp8.0.dll</HintPath>
-    </Reference>
-    <Reference Include="ZXingNetMobile, Version=1.4.7.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\ZXing.Net.Mobile.1.4.7.1\lib\wp8\ZXingNetMobile.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Acr.BarCodes.Interface\Acr.BarCodes.Interface.csproj">
       <Project>{caf2ee18-c01f-46fd-bd3b-ef3078b74448}</Project>
       <Name>Acr.BarCodes.Interface</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Reference Include="WriteableBitmapExWinPhone, Version=1.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WriteableBitmapEx.1.5.0.0\lib\WindowsPhone8\WriteableBitmapExWinPhone.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WriteableBitmapExWinPhoneXnaDependant, Version=1.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WriteableBitmapEx.1.5.0.0\lib\WindowsPhone8\WriteableBitmapExWinPhoneXnaDependant.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="zxing.portable, Version=0.14.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ZXing.Net.Mobile.1.5.1.0\lib\wp8\zxing.portable.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ZXingNetMobile, Version=1.5.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ZXing.Net.Mobile.1.5.1.0\lib\wp8\ZXingNetMobile.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="..\Acr.BarCodes.Shared\Acr.BarCodes.Shared.projitems" Label="Shared" Condition="Exists('..\Acr.BarCodes.Shared\Acr.BarCodes.Shared.projitems')" />
+  <Import Project="..\Acr.BarCodes.ZXing.Shared\Acr.BarCodes.ZXing.Shared.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />
   <ProjectExtensions />

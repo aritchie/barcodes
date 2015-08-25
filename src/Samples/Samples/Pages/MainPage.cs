@@ -11,12 +11,12 @@ namespace Samples.Pages {
         public MainPage() {
             var btnScan = new Button { Text = "Scan BarCode" };
             btnScan.Clicked += async (sender, args) => {
-                var result = await BarCodes.Instance.Read();
+                var result = await BarCodes.Instance.Scan();
                 if (!result.Success)
                     await this.DisplayAlert("Failed", "Failed to get barcode", "OK");
 
                 else {
-                    var msg = String.Format("Barcode: {0} - {1}", result.Format, result.Code);
+                    var msg = $"Barcode: {result.Format} - {result.Code}";
                     await this.DisplayAlert("Success", msg, "OK");
                 }
             };

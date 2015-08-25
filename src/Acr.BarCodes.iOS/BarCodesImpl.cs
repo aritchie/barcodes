@@ -1,7 +1,6 @@
 ﻿using System;
 using System.IO;
-using System.Linq;
-using ZXing;
+using Acr.Support.iOS;
 using ZXing.Mobile;
 using UIKit;
 
@@ -10,7 +9,7 @@ namespace Acr.BarCodes {
 
     public class BarCodesImpl : AbstractBarCodesImpl {
 
-        protected override Stream ToImageStream(BarcodeWriter writer, BarCodeCreateConfiguration cfg) {
+        protected override Stream ToImageStream(ZXing.Mobile.BarcodeWriter writer, BarCodeCreateConfiguration cfg) {
 			return (cfg.ImageType == ImageType.Png)
 				? writer.Write(cfg.BarCode).AsPNG().AsStream()
 				: writer.Write(cfg.BarCode).AsJPEG().AsStream();
@@ -28,7 +27,7 @@ namespace Acr.BarCodes {
 
 
         protected override MobileBarcodeScanner GetInstance() {
-			var controller = this.GetTopViewController();
+			var controller = UIApplication.SharedApplication.GetTopViewController();
 			var scanner = new MobileBarcodeScanner(controller);
 
             if (BarCodes.CustomOverlayFactory != null) {
@@ -40,33 +39,5 @@ namespace Acr.BarCodes {
             }
             return scanner;
         }
-
-
-		protected virtual UIWindow GetTopWindow() {
-			return UIApplication.SharedApplication
-				.Windows
-				.Reverse()
-				.FirstOrDefault(x =>
-					x.WindowLevel == UIWindowLevel.Normal &&
-					!x.Hidden
-				);
-		}
-
-
-		protected virtual UIViewController GetTopViewController() {
-			var root = this.GetTopWindow().RootViewController;
-			var tabs = root as UITabBarController;
-			if (tabs != null)
-				return tabs.PresentedViewController ?? tabs.SelectedViewController;
-
-			var nav = root as UINavigationController;
-			if (nav != null)
-				return nav.VisibleViewController;
-
-			if (root.PresentedViewController != null)
-				return root.PresentedViewController;
-
-			return root;
-		}
     }
 }
