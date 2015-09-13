@@ -107,6 +107,6 @@ namespace Acr.BarCodes {
 
 
         protected abstract MobileBarcodeScanner GetInstance();
-        protected abstract Stream ToImageStream(ZXing.Mobile.BarcodeWriter writer, BarCodeCreateConfiguration cfg);
+        protected abstract Stream ToImageStream(IBarcodeWriter writer, BarCodeCreateConfiguration cfg) {}
     }
 }

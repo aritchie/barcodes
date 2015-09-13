@@ -1,38 +1,59 @@
 ﻿using System;
 using System.IO;
-using ZXing.Mobile;
-using Android.Graphics;
-using ZXing;
+using System.Threading;
+using System.Threading.Tasks;
+using Android.Gms.Common;
+using Android.Gms.Vision;
+using Android.Gms.Vision.Barcodes;
 
 
 namespace Acr.BarCodes {
 
-    public class BarCodesImpl : AbstractBarCodesImpl {
+    public class BarCodesImpl : IBarCodes {
 
-        protected override MobileBarcodeScanner GetInstance() {
-            var scanner = new MobileBarcodeScanner();
-            if (BarCodes.CustomOverlayFactory != null) {
-                var overlay = BarCodes.CustomOverlayFactory();
-                if (overlay != null) {
-                    scanner.UseCustomOverlay = true;
-                    scanner.CustomOverlay = overlay;
-                }
-            }
-            return scanner;
+
+        public Stream Create(BarCodeCreateConfiguration config) {
+            return null;
         }
 
 
-        protected override Stream ToImageStream(BarcodeWriter writer, BarCodeCreateConfiguration cfg) {
-			var stream = new MemoryStream();
-			var cf = cfg.ImageType == ImageType.Png
-				? Bitmap.CompressFormat.Png
-				: Bitmap.CompressFormat.Jpeg;
+        public void Cancel() {
+            // TODO: cancel any active tasks?
+            if (this.activity == null)
+                return;
 
-			using (var bitmap = writer.Write(cfg.BarCode))
-				bitmap.Compress(cf, 0, stream);
+            this.activity.Finish();
+            this.activity = null;
+        }
 
-			stream.Position = 0;
-			return stream;
+
+        public void ContinuousScan(Action<BarCodeResult> onScan, BarCodeReadConfiguration config, CancellationToken? cancelToken) {
+            cancelToken?.Register(this.Cancel);
+            this.StartScan(config, onScan);
+        }
+
+
+        public Task<BarCodeResult> Scan(BarCodeReadConfiguration config, CancellationToken? cancelToken) {
+            var tcs = new TaskCompletionSource<BarCodeResult>();
+            cancelToken?.Register(() => tcs.TrySetResult(null));
+            this.StartScan(config, x => {
+                this.Cancel();
+                tcs.TrySetResult(x);
+            });
+            return tcs.Task;
+        }
+
+
+        ScannerActivity activity;
+        void StartScan(BarCodeReadConfiguration config, Action<BarCodeResult> onScan) {
+            if (this.activity != null)
+                throw new ArgumentException("Scanner is already active");
+
+            //new Tracker<Barcode>();
+            //new BarcodeDetector();
+            var scanner = new BarcodeDetector.Builder(null)
+                .SetBarcodeFormats(BarcodeFormat.Pdf417)
+                .Build();
         }
     }
 }

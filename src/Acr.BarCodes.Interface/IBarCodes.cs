@@ -8,8 +8,9 @@ namespace Acr.BarCodes {
 
 	public interface IBarCodes {
 
-        void ContinuousScan(Action<BarCodeResult> onScan, BarCodeReadConfiguration config = null, CancellationToken cancelToken = default(CancellationToken));
-		Task<BarCodeResult> Scan(BarCodeReadConfiguration config = null, CancellationToken cancelToken = default(CancellationToken));
+        void Cancel();
+        void ContinuousScan(Action<BarCodeResult> onScan, BarCodeReadConfiguration config = null, CancellationToken? cancelToken = null);
+		Task<BarCodeResult> Scan(BarCodeReadConfiguration config = null, CancellationToken? cancelToken = null);
 		Stream Create(BarCodeCreateConfiguration config);
 	}
 }

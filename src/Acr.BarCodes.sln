@@ -50,20 +50,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Acr.BarCodes.Interface", "A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Acr.BarCodes.Uwp", "Acr.BarCodes.Uwp\Acr.BarCodes.Uwp.csproj", "{459ED79B-0F2A-41A4-B9D0-54108C8077D3}"
 EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Acr.BarCodes.ZXing.Shared", "Acr.BarCodes.ZXing.Shared\Acr.BarCodes.ZXing.Shared.shproj", "{CECD9047-0C3F-4DE3-84D3-5A5B05A66311}"
-EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		Acr.BarCodes.ZXing.Shared\Acr.BarCodes.ZXing.Shared.projitems*{cecd9047-0c3f-4de3-84d3-5a5b05a66311}*SharedItemsImports = 13
 		Acr.BarCodes.Shared\Acr.BarCodes.Shared.projitems*{6fca8466-a7b4-41f3-b7e7-23c263229778}*SharedItemsImports = 4
-		Acr.BarCodes.ZXing.Shared\Acr.BarCodes.ZXing.Shared.projitems*{6fca8466-a7b4-41f3-b7e7-23c263229778}*SharedItemsImports = 4
 		Acr.BarCodes.Shared\Acr.BarCodes.Shared.projitems*{459ed79b-0f2a-41a4-b9d0-54108c8077d3}*SharedItemsImports = 4
 		Acr.BarCodes.Shared\Acr.BarCodes.Shared.projitems*{d76d2f54-5b06-4461-b85a-ada6d2661d04}*SharedItemsImports = 13
 		Acr.BarCodes.Shared\Acr.BarCodes.Shared.projitems*{1bfaa799-38fb-4db0-871d-11db5817a704}*SharedItemsImports = 4
 		Acr.BarCodes.Shared\Acr.BarCodes.Shared.projitems*{6efb24a8-0dfa-4a9a-86f5-00bb453875e1}*SharedItemsImports = 4
-		Acr.BarCodes.ZXing.Shared\Acr.BarCodes.ZXing.Shared.projitems*{6efb24a8-0dfa-4a9a-86f5-00bb453875e1}*SharedItemsImports = 4
 		Acr.BarCodes.Shared\Acr.BarCodes.Shared.projitems*{b659630d-f0f8-4663-b092-2edfac56ae12}*SharedItemsImports = 4
-		Acr.BarCodes.ZXing.Shared\Acr.BarCodes.ZXing.Shared.projitems*{b659630d-f0f8-4663-b092-2edfac56ae12}*SharedItemsImports = 4
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Ad-Hoc|Any CPU = Ad-Hoc|Any CPU
@@ -732,6 +726,5 @@ Global
 		{DC51E5AC-4DFB-449E-95E3-A471C0EBB53C} = {3A69114C-5DFB-4995-BFC6-84576AA1EB2B}
 		{CAF2EE18-C01F-46FD-BD3B-EF3078B74448} = {6CAB265F-D694-4F0E-8384-DA3FEC77FA8C}
 		{459ED79B-0F2A-41A4-B9D0-54108C8077D3} = {6CAB265F-D694-4F0E-8384-DA3FEC77FA8C}
-		{CECD9047-0C3F-4DE3-84D3-5A5B05A66311} = {6CAB265F-D694-4F0E-8384-DA3FEC77FA8C}
 	EndGlobalSection
 EndGlobal

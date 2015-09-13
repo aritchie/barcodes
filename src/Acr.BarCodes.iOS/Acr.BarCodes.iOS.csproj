@@ -33,8 +33,10 @@
     <DefineConstants>__UNIFIED__;__MOBILE__;__IOS__;__PLATFORM__</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="BarCodeCaptureDelegate.cs" />
     <Compile Include="BarCodesImpl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ScannerViewController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Acr.Support.iOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -44,18 +46,12 @@
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime" />
+    <Reference Include="System.IO" />
+    <Reference Include="System.Threading.Tasks" />
     <Reference Include="Xamarin.iOS" />
-    <Reference Include="zxing.portable, Version=0.14.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ZXing.Net.Mobile.1.5.1.0\lib\Xamarin.iOS\zxing.portable.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="ZXingNetMobile, Version=1.5.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ZXing.Net.Mobile.1.5.1.0\lib\Xamarin.iOS\ZXingNetMobile.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
   </ItemGroup>
   <Import Project="..\Acr.BarCodes.Shared\Acr.BarCodes.Shared.projitems" Label="Shared" Condition="Exists('..\Acr.BarCodes.Shared\Acr.BarCodes.Shared.projitems')" />
-  <Import Project="..\Acr.BarCodes.ZXing.Shared\Acr.BarCodes.ZXing.Shared.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\Acr.BarCodes.Interface\Acr.BarCodes.Interface.csproj">
