@@ -42,31 +42,16 @@ namespace Acr.BarCodes {
         }
 
 
-		protected virtual UIWindow GetTopWindow() {
-			return UIApplication.SharedApplication
-				.Windows
-				.Reverse()
-				.FirstOrDefault(x =>
-					x.WindowLevel == UIWindowLevel.Normal &&
-					!x.Hidden
-				);
-		}
-
-
 		protected virtual UIViewController GetTopViewController() {
-			var root = this.GetTopWindow().RootViewController;
-			var tabs = root as UITabBarController;
-			if (tabs != null)
-				return tabs.PresentedViewController ?? tabs.SelectedViewController;
+            var window = UIApplication.SharedApplication.KeyWindow;
+            var vc = window.RootViewController;
 
-			var nav = root as UINavigationController;
-			if (nav != null)
-				return nav.VisibleViewController;
+            while (vc.PresentedViewController != null)
+            {
+                vc = vc.PresentedViewController;
+            }
 
-			if (root.PresentedViewController != null)
-				return root.PresentedViewController;
-
-			return root;
+            return vc;
 		}
     }
 }
